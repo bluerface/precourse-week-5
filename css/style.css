@@ -1,1 +1,27 @@
+.q-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
+  border: 1px solid black;
+  min-width: 300px;
+}
+
+.q, .a {
+  padding: 10px;
+  margin: 5px;
+}
+
+.q {
+  border: 1px red solid;
+}
+
+.a {
+  border: 1px green solid;
+  cursor: pointer;
+}
+
+.a:hover {
+  background: LightGreen;
+}
