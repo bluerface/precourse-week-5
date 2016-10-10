@@ -1,14 +1,20 @@
 var score = 0;
-var curQIndex = 0
+var curQIndex = 0;
+var clickOK = true;
 
 $(document).ready(function(){
   createQ(0);
 
   $(document).on('click', '.a', function(){
-    if($(this).attr('id') == questions[curQIndex]['correct']){
-      updateScore(1);
+    if(clickOK){
+      clickOK = false;
+
+      if($(this).attr('id') == questions[curQIndex]['correct']){
+        updateScore(1);
+      }
+
+      next();
     }
-    next();
   });
 
 })
@@ -45,6 +51,8 @@ function next(){
       curQIndex++;
       createQ(curQIndex);
     }
-    $('.q-container').fadeIn(500);
+    $('.q-container').fadeIn(500, function(){
+      clickOK = true;
+    });
   })
 }
