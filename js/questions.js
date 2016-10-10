@@ -7,5 +7,23 @@ var questions = [
         "this answer is an in joke"
       ],
     correct: 2
+  },
+  {
+    q: "question two",
+    a: ["akfddkja;lkjf",
+        "butt",
+        "djpoijvpajdf"
+      ],
+    correct: 1
+  },
+  {
+    q: "question three",
+    a: ["jakdfjahdfkjh",
+        "vyouhadfj",
+        "adhvouhijadnf",
+        "hello"
+      ],
+    correct: 3
   }
+
 ]
