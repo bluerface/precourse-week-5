@@ -11,9 +11,12 @@ $(document).ready(function(){
 
       if($(this).attr('id') == questions[curQIndex]['correct']){
         updateScore(1);
+        fadeCorrect();
+      } else {
+        fadeFalse();
       }
 
-      next();
+      // next();
     }
   });
 
@@ -31,8 +34,9 @@ function createQ(index){
   })
 }
 
+
 function createFinish(){
-  var ele = "<p class='f'>You have finished the quiz!</p>"
+  var ele = "<p class='fin'>You have finished the quiz!</p>"
 
   $('.q-container').empty().append(ele);
 }
@@ -43,16 +47,32 @@ function updateScore(int) {
   $('span#score').text(score);
 }
 
-function next(){
+
+function fadeCorrect(){
   $('.q-container').fadeOut(500, function(){
+    $('.correct').fadeIn(500).delay(400).fadeOut(500, function(){
+      next();
+    });
+  });
+}
+
+function fadeFalse(){
+  $('.q-container').fadeOut(500, function(){
+    $('.false').fadeIn(500).delay(400).fadeOut(500, function(){
+      next();
+    });
+  });
+}
+
+function next(){
     if(curQIndex == questions.length - 1){
       createFinish();
     } else {
       curQIndex++;
       createQ(curQIndex);
     }
+
     $('.q-container').fadeIn(500, function(){
       clickOK = true;
     });
-  })
 }

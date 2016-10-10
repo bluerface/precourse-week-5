@@ -8,12 +8,12 @@
   min-width: 300px;
 }
 
-.q, .a, .f {
+.q, .a, .fin, .correct, .false {
   padding: 10px;
   margin: 5px;
 }
 
-.q {
+.q, .false {
   border: 1px red solid;
 }
 
@@ -26,7 +26,7 @@
   background: LightGreen;
 }
 
-.f {
+.fin, .correct {
   text-align: center;
   border: 1px solid green;
 }
