@@ -1,9 +1,10 @@
 var score = 0;
 var curQIndex = 0;
 var clickOK = true;
+var fspeed = 250;
 
 $(document).ready(function(){
-  createQ(0);
+  createQ(curQIndex);
 
   $(document).on('click', '.a', function(){
     if(clickOK){
@@ -15,10 +16,18 @@ $(document).ready(function(){
       } else {
         fadeFalse();
       }
-
-      // next();
     }
   });
+
+  $(document).on('click', '.restart', function(){
+    updateScore(-1);
+    curQIndex = 0;
+    console.log(curQIndex);
+    $('.q-container').fadeOut(fspeed, function(){
+      createQ(curQIndex);
+      $('.q-container').fadeIn(fspeed);
+    })
+  })
 
 })
 
@@ -36,33 +45,41 @@ function createQ(index){
 
 
 function createFinish(){
-  var ele = "<p class='fin'>You have finished the quiz!</p>"
+  var ele = "<p class='fin'>You have finished the quiz!</p>";
+  var ele2 = "<p class='fin'> Score:" + score + "/" + questions.length + '</p>';
+  var ele3 = "<p class='fin restart'> Restart </p>";
 
-  $('.q-container').empty().append(ele);
+  $('.q-container').empty().append(ele, ele2, ele3);
 }
 
 
 function updateScore(int) {
-  score += int;
+  if(int == -1) {
+    score = 0
+  } else {
+    score += int;
+  }
   $('span#score').text(score);
 }
 
 
 function fadeCorrect(){
-  $('.q-container').fadeOut(500, function(){
-    $('.correct').fadeIn(500).delay(400).fadeOut(500, function(){
+  $('.q-container').fadeOut(fspeed, function(){
+    $('.correct').fadeIn(fspeed).delay(fspeed).fadeOut(fspeed, function(){
       next();
     });
   });
 }
 
+
 function fadeFalse(){
-  $('.q-container').fadeOut(500, function(){
-    $('.false').fadeIn(500).delay(400).fadeOut(500, function(){
+  $('.q-container').fadeOut(fspeed, function(){
+    $('.false').fadeIn(fspeed).delay(fspeed).fadeOut(fspeed, function(){
       next();
     });
   });
 }
+
 
 function next(){
     if(curQIndex == questions.length - 1){
@@ -72,7 +89,7 @@ function next(){
       createQ(curQIndex);
     }
 
-    $('.q-container').fadeIn(500, function(){
+    $('.q-container').fadeIn(fspeed, function(){
       clickOK = true;
     });
 }
