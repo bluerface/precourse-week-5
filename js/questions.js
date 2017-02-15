@@ -12,7 +12,7 @@ var questions = [
   {
     q: "What is your favourite fruit?",
     a: [
-        "pinapple",
+        "pineapple",
         "chicken",
         "kumkwat"
       ],
